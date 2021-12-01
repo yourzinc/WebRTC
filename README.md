@@ -13,12 +13,6 @@ socket.io|4.3.2
 PeerJs|
 openssl|[Download](https://slproweb.com/products/Win32OpenSSL.html)
 
-  "express": "^4.17.1",
-    "socket.io": "^4.3.2",
-express.js 
-PeerJs
-소켓 io
-
 ## [실행방법] 
 ```jsx
 npm init -y
