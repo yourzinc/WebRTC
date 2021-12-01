@@ -1,0 +1,14 @@
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: repeat(3, minmax(100px, auto));
+}
+
+.item_5{
+	grid-column: 2/3;
+	grid-row: 2/3;
+	text-align:center;
+}
+.a_color{
+	background: yellow;
+}
