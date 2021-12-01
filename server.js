@@ -16,14 +16,15 @@ const server = https.createServer(
  
 const io = require('socket.io')(server);
  
-var url = new Array();
+
+var url = new Array(5);
 var i =0;
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
  
 app.get('/', (req, res) => {
-    res.render('enter')
+    res.render('enter',{url_info:url})
     //res.redirect(`/${uuidV4()}`) // `` VS ''
                                  // Random uuid(Room Number)
                                  // for every single time to go to homepage
@@ -39,6 +40,19 @@ app.get('/makeRoom',(req,res)=>{
 app.get('/enterRecentRoom',(req,res)=>{
     res.redirect(`/${url[i-1]}`)
 })
+
+
+
+app.get('/enterRoom_1',(req,res)=>{
+    res.redirect(`/${url[0]}`)
+})
+app.get('/enterRoom_2',(req,res)=>{
+    res.redirect(`/${url[1]}`)
+})
+app.get('/enterRoom_3',(req,res)=>{
+    res.redirect(`/${url[2]}`)
+})
+
 
 app.get('/:room', (req, res) => {
     res.render('room', { roomId : req.params.room })
