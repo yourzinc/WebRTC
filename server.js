@@ -10,7 +10,7 @@ const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'ilovemasaki', // DB 비밀번호 입력
-    database: 'express_db'
+    database: 'express_db' // 처음에 할 때는 이 부분 주석 처리
 });
 
 con.connect(function(err){
@@ -24,7 +24,7 @@ con.connect(function(err){
     //     console.log('database created');
     // })
 
-    //DB의 TABLE 생성 코드
+//    DB의 TABLE 생성 코드
 
     // const sql = 'CREATE TABLE users (userID INT NOT NULL PRIMARY KEY AUTO_INCREMENT, roomID VARCHAR(255) NOT NULL)';
     // con.query(sql, function (err, result)
@@ -100,18 +100,22 @@ app.get('/enterRecentRoom',(req,res)=>{
 })
 
 
+app.get('/enterRoom/:number',(req,res)=>{
+    const sql ="SELECT roomID FROM users WHERE userID = ?"
+    con.query(sql, [req.params.number], function(err, result, fields) {
+        if (err) throw err;
+        res.redirect(`/${result[0].roomID}`);
+        console.log(result)
+    })
+});
 
-app.get('/enterRoom_1',(req,res)=>{
 
-    
-    res.redirect(`/${url[0]}`)
-})
-app.get('/enterRoom_2',(req,res)=>{
-    res.redirect(`/${url[1]}`)
-})
-app.get('/enterRoom_3',(req,res)=>{
-    res.redirect(`/${url[2]}`)
-})
+// app.get('/enterRoom_2',(req,res)=>{
+//     res.redirect(`/${url[1]}`)
+// })
+// app.get('/enterRoom_3',(req,res)=>{
+//     res.redirect(`/${url[2]}`)
+// })
 
 
 app.get('/:room', (req, res) => {
