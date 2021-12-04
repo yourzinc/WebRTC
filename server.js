@@ -1,7 +1,30 @@
 const express = require('express');
 const app = express();
 const { v4: uuidV4 } = require('uuid');
- 
+
+
+/*============================================================*/
+/* Connect MySQL */
+const mysql = require('mysql');
+const con = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'ilovemasaki', // DB 비밀번호 입력
+    database: 'express_db'
+});
+
+con.connect(function(err){
+    if(err) throw err;
+    console.log('Connected');
+
+    //DB 생성 코드
+    // con.query('CREATE DATABASE express_db', function(err, result){
+    //     if(err) throw err;
+    //     console.log('database created');
+    // })
+})
+/*============================================================*/
+
 const fs = require('fs');
 const https = require('https');
 const server = https.createServer(
