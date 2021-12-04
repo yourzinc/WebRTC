@@ -13,9 +13,8 @@ const server = https.createServer(
   },
   app
 );
- 
-const io = require('socket.io')(server);
- 
+
+const io = require('socket.io')(server); 
 
 var url = new Array(5);
 var i =0;
